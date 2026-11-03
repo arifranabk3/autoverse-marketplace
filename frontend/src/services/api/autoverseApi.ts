@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { ApiResponse, ApiHealthResponse, ApiDatabaseHealthResponse } from '@/types/api';
 import { Vehicle, Dealer } from '@/types';
 
@@ -61,16 +61,52 @@ export class AutoverseApiClient {
     return res.data.data;
   }
 
-  // Dealers
-  async getDealers(params?: Record<string, any>): Promise<ApiResponse<Dealer[]>> {
-    const res = await this.client.get<ApiResponse<Dealer[]>>('/dealers', { params });
-    return res.data;
+  async createVehicle(payload: any): Promise<Vehicle> {
+    const res = await this.client.post<ApiResponse<Vehicle>>('/vehicles', payload);
+    return res.data.data;
   }
 
   // Listings
   async getListings(params?: Record<string, any>): Promise<ApiResponse<any[]>> {
     const res = await this.client.get<ApiResponse<any[]>>('/listings', { params });
     return res.data;
+  }
+
+  async getListingById(id: string): Promise<any> {
+    const res = await this.client.get<ApiResponse<any>>(`/listings/${id}`);
+    return res.data.data;
+  }
+
+  async createListing(payload: any): Promise<any> {
+    const res = await this.client.post<ApiResponse<any>>('/listings', payload);
+    return res.data.data;
+  }
+
+  async updateListing(id: string, payload: any): Promise<any> {
+    const res = await this.client.patch<ApiResponse<any>>(`/listings/${id}`, payload);
+    return res.data.data;
+  }
+
+  async updateListingStatus(id: string, status: string): Promise<any> {
+    const res = await this.client.patch<ApiResponse<any>>(`/listings/${id}/status`, { status });
+    return res.data.data;
+  }
+
+  async getMyListings(): Promise<any[]> {
+    const res = await this.client.get<ApiResponse<any[]>>('/users/me/listings');
+    return res.data.data;
+  }
+
+  // Dealers
+  async getDealers(params?: Record<string, any>): Promise<ApiResponse<Dealer[]>> {
+    const res = await this.client.get<ApiResponse<Dealer[]>>('/dealers', { params });
+    return res.data;
+  }
+
+  // Media / Presigned S3 Upload URL
+  async getUploadUrl(payload: { fileName: string; fileType: string; fileSize: number }): Promise<any> {
+    const res = await this.client.post<ApiResponse<any>>('/media/upload-url', payload);
+    return res.data.data;
   }
 }
 

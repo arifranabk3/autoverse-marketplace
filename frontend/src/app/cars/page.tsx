@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MOCK_VEHICLES } from '@/data/mockData';
 import { VehicleCard } from '@/components/vehicle/VehicleCard';
 import { FilterSidebar } from '@/components/vehicle/FilterSidebar';
 import { Breadcrumbs } from '@/components/common/Breadcrumbs';
-import { EmptyState } from '@/components/common/FeedbackStates';
+import { EmptyState, LoadingSkeleton } from '@/components/common/FeedbackStates';
 import { SlidersHorizontal, ArrowUpDown } from 'lucide-react';
+import { autoverseApi } from '@/services/api/autoverseApi';
+import { Vehicle } from '@/types';
 
 export default function BrowseCarsPage() {
   const [selectedMake, setSelectedMake] = useState('All');
@@ -16,20 +18,62 @@ export default function BrowseCarsPage() {
   const [sortBy, setSortBy] = useState('featured');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  const [vehicles, setVehicles] = useState<Vehicle[]>(MOCK_VEHICLES);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLiveConnected, setIsLiveConnected] = useState(false);
+
+  // Progressive API integration: Try backend first, fallback to mock data seamlessly
+  useEffect(() => {
+    let isMounted = true;
+    async function loadBackendVehicles() {
+      setIsLoading(true);
+      try {
+        const params: Record<string, any> = {
+          sortBy,
+          maxPrice: priceRange,
+        };
+        if (selectedMake !== 'All') params.make = selectedMake;
+        if (selectedBody !== 'All') params.bodyType = selectedBody;
+        if (selectedFuel !== 'All') params.fuelType = selectedFuel;
+
+        const res = await autoverseApi.getVehicles(params);
+        if (isMounted && res.success && res.data && res.data.length > 0) {
+          setVehicles(res.data);
+          setIsLiveConnected(true);
+        } else if (isMounted) {
+          // If backend has 0 active records, use curated fallback
+          setVehicles(MOCK_VEHICLES);
+        }
+      } catch (err) {
+        // Fallback to offline curated mock vehicles
+        if (isMounted) {
+          setVehicles(MOCK_VEHICLES);
+        }
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+
+    loadBackendVehicles();
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedMake, selectedBody, selectedFuel, priceRange, sortBy]);
+
   const filteredVehicles = useMemo(() => {
-    return MOCK_VEHICLES.filter((v) => {
-      if (selectedMake !== 'All' && v.make !== selectedMake) return false;
-      if (selectedBody !== 'All' && v.bodyType !== selectedBody) return false;
-      if (selectedFuel !== 'All' && v.fuelType !== selectedFuel) return false;
-      if (v.price > priceRange) return false;
+    return vehicles.filter((v) => {
+      if (selectedMake !== 'All' && v.make.toLowerCase() !== selectedMake.toLowerCase()) return false;
+      if (selectedBody !== 'All' && v.bodyType.toLowerCase() !== selectedBody.toLowerCase()) return false;
+      if (selectedFuel !== 'All' && v.fuelType.toLowerCase() !== selectedFuel.toLowerCase()) return false;
+      if (v.price && v.price > priceRange) return false;
       return true;
     }).sort((a, b) => {
-      if (sortBy === 'price_asc') return a.price - b.price;
-      if (sortBy === 'price_desc') return b.price - a.price;
-      if (sortBy === 'mileage_asc') return a.mileage - b.mileage;
-      return 0; // featured default
+      if (sortBy === 'price_asc') return (a.price || 0) - (b.price || 0);
+      if (sortBy === 'price_desc') return (b.price || 0) - (a.price || 0);
+      if (sortBy === 'mileage_asc') return (a.mileage || 0) - (b.mileage || 0);
+      return 0;
     });
-  }, [selectedMake, selectedBody, selectedFuel, priceRange, sortBy]);
+  }, [vehicles, selectedMake, selectedBody, selectedFuel, priceRange, sortBy]);
 
   const resetFilters = () => {
     setSelectedMake('All');
@@ -47,7 +91,14 @@ export default function BrowseCarsPage() {
       {/* Header Title & Sorting Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#2A3039] gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-white">Prestige Vehicle Inventory</h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-3xl font-extrabold text-white">Prestige Vehicle Inventory</h1>
+            {isLiveConnected && (
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                Live Atlas Feed
+              </span>
+            )}
+          </div>
           <p className="text-sm text-[#A1A8B3] mt-1">
             Displaying {filteredVehicles.length} verified supercars and performance models.
           </p>
@@ -99,10 +150,12 @@ export default function BrowseCarsPage() {
 
         {/* Vehicle Cards Grid */}
         <div className="flex-1 w-full">
-          {filteredVehicles.length > 0 ? (
+          {isLoading ? (
+            <LoadingSkeleton count={6} />
+          ) : filteredVehicles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredVehicles.map((vehicle) => (
-                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+                <VehicleCard key={vehicle.id || String(vehicle._id)} vehicle={vehicle} />
               ))}
             </div>
           ) : (
@@ -119,4 +172,3 @@ export default function BrowseCarsPage() {
     </div>
   );
 }
-

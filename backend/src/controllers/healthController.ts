@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 
 export function getHealth(_req: Request, res: Response): void {
@@ -24,13 +24,14 @@ export function getDatabaseHealth(_req: Request, res: Response): void {
 
   const isConnected = state === 1;
 
+  // Security: Hostname is abstracted to prevent internal infrastructure disclosure
   res.status(isConnected ? 200 : 503).json({
     success: isConnected,
     data: {
-      database: mongoose.connection.name || 'autoverse',
+      database: 'autoverse',
       status: states[state] || 'unknown',
       connected: isConnected,
-      host: mongoose.connection.host || 'unresolved',
+      cluster: 'Sellzy-Staging',
       timestamp: new Date().toISOString(),
     },
   });
