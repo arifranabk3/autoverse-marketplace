@@ -1,27 +1,27 @@
-﻿import express, { Request, Response, NextFunction } from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+import app from './app';
+import { connectDatabase } from './config/database';
+import dotenv from 'dotenv';
 
-const app = express();
-const PORT = process.env.PORT || 8000;
+dotenv.config();
 
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
-// Health check endpoint
-app.get('/health', (_req: Request, res: Response) => {
-  res.status(200).json({ status: 'healthy', timestamp: new Date().toISOString() });
-});
-
-// Global error handler
-app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
-  res.status(500).json({
-    error: {
-      code: 'INTERNAL_SERVER_ERROR',
-      message: err.message || 'An unexpected error occurred.'
+async function bootstrap() {
+  try {
+    if (process.env.MONGODB_URI) {
+      await connectDatabase();
+    } else {
+      console.warn('[Warning] MONGODB_URI not found in environment. Server starting in API-only mode.');
     }
-  });
-});
 
-export default app;
+    app.listen(PORT, () => {
+      console.log(`[Server] AUTOVERSE Backend running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode.`);
+      console.log(`[Health] Health check endpoint: http://localhost:${PORT}/api/v1/health`);
+    });
+  } catch (error) {
+    console.error('[Bootstrap Error] Failed to initialize server:', error);
+    process.exit(1);
+  }
+}
+
+bootstrap();
