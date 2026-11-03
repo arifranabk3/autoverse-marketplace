@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -6,12 +6,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          500: '#0284c7',
-          600: '#0369a1',
-          700: '#075985',
+        autoverse: {
+          bg: '#0B0D10',
+          secondary: '#14181E',
+          card: '#1B2028',
+          border: '#2A3039',
+          accent: '#FF6B00',
+          accentHover: '#E55F00',
+          textMuted: '#A1A8B3',
+          textLight: '#FFFFFF',
         }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       }
     },
   },
