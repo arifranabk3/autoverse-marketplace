@@ -8,9 +8,9 @@ export default function DashboardOverviewPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#E8EDF3] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#DCE3EC] gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Client Portfolio Overview</h1>
+          <h1 className="text-2xl font-bold text-[#14243A]">Client Portfolio Overview</h1>
           <p className="text-xs text-[#64748B] mt-1">Welcome back, Alexander. Track your inquiries and active vehicles.</p>
         </div>
 
@@ -24,31 +24,31 @@ export default function DashboardOverviewPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+        <div className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl space-y-1">
           <span className="text-[10px] uppercase font-bold text-[#64748B]">Active Listings</span>
-          <p className="text-2xl font-extrabold text-white">2</p>
+          <p className="text-2xl font-extrabold text-[#14243A]">2</p>
         </div>
 
-        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+        <div className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl space-y-1">
           <span className="text-[10px] uppercase font-bold text-[#64748B]">Saved Cars</span>
-          <p className="text-2xl font-extrabold text-white">5</p>
+          <p className="text-2xl font-extrabold text-[#14243A]">5</p>
         </div>
 
-        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+        <div className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl space-y-1">
           <span className="text-[10px] uppercase font-bold text-[#64748B]">Unread Inquiries</span>
           <p className="text-2xl font-extrabold text-[#F36B32]">3</p>
         </div>
 
-        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+        <div className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl space-y-1">
           <span className="text-[10px] uppercase font-bold text-[#64748B]">Escrow Deposits</span>
-          <p className="text-2xl font-extrabold text-white">$45,000</p>
+          <p className="text-2xl font-extrabold text-[#14243A]">$45,000</p>
         </div>
       </div>
 
       {/* Active Listings Preview */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-white">Your Listed Vehicles</h3>
+          <h3 className="text-lg font-bold text-[#14243A]">Your Listed Vehicles</h3>
           <Link href="/dashboard/listings" className="text-xs text-[#F36B32] hover:underline">
             View All
           </Link>
@@ -58,12 +58,12 @@ export default function DashboardOverviewPage() {
           {activeListings.map((veh) => (
             <div
               key={veh.id}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl gap-4"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl gap-4"
             >
               <div className="flex items-center gap-4">
                 <img src={veh.images[0]} alt={veh.title} className="w-20 h-14 object-cover rounded-lg" />
                 <div>
-                  <h4 className="font-bold text-white text-sm">{veh.title}</h4>
+                  <h4 className="font-bold text-[#14243A] text-sm">{veh.title}</h4>
                   <p className="text-xs text-[#64748B] mt-0.5">${veh.price.toLocaleString()} • {veh.mileage.toLocaleString()} mi</p>
                 </div>
               </div>
@@ -74,7 +74,7 @@ export default function DashboardOverviewPage() {
                 </span>
                 <Link
                   href={`/dashboard/edit-listing?id=${veh.id}`}
-                  className="px-3 py-1.5 rounded-lg bg-[#F0F4F8] border border-[#E8EDF3] text-xs font-semibold text-white hover:border-white transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#F0F4F8] border border-[#DCE3EC] text-xs font-semibold text-[#14243A] hover:border-white transition-colors"
                 >
                   Edit
                 </Link>

@@ -11,7 +11,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
             <div className="w-10 h-10 rounded-xl bg-[#F36B32] flex items-center justify-center text-white">
               <Car className="w-6 h-6" />
             </div>
-            <span className="text-2xl font-bold tracking-wider text-white">
+            <span className="text-2xl font-bold tracking-wider text-[#14243A]">
               AUTO<span className="text-[#F36B32]">VERSE</span>
             </span>
           </Link>

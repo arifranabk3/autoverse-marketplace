@@ -22,14 +22,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="bg-[#F0F4F8] border border-[#E8EDF3] p-8 rounded-3xl shadow-2xl space-y-6">
+    <div className="bg-[#F0F4F8] border border-[#DCE3EC] p-8 rounded-3xl shadow-2xl space-y-6">
       <div className="text-center space-y-1">
-        <h2 className="text-2xl font-bold text-white">Create AUTOVERSE Account</h2>
+        <h2 className="text-2xl font-bold text-[#14243A]">Create AUTOVERSE Account</h2>
         <p className="text-xs text-[#64748B]">Select your account classification to begin</p>
       </div>
 
       {/* Account Type Toggle */}
-      <div className="grid grid-cols-2 gap-2 p-1 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl">
+      <div className="grid grid-cols-2 gap-2 p-1 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl">
         <button
           type="button"
           onClick={() => setAccountType('buyer')}
@@ -59,7 +59,7 @@ export default function RegisterPage() {
               type="text"
               placeholder="Alexander Pierce"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function RegisterPage() {
               type="email"
               placeholder="alex@domain.com"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
             />
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function RegisterPage() {
               type="password"
               placeholder="Minimum 8 characters"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
             />
           </div>
         </div>
@@ -99,7 +99,7 @@ export default function RegisterPage() {
         </button>
       </form>
 
-      <div className="text-center pt-2 border-t border-[#E8EDF3] text-xs text-[#64748B]">
+      <div className="text-center pt-2 border-t border-[#DCE3EC] text-xs text-[#64748B]">
         Already have an account?{' '}
         <Link href="/auth/login" className="text-[#F36B32] font-semibold hover:underline">
           Sign In

@@ -20,9 +20,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="bg-[#F0F4F8] border border-[#E8EDF3] p-8 rounded-3xl shadow-2xl space-y-6">
+    <div className="bg-[#F0F4F8] border border-[#DCE3EC] p-8 rounded-3xl shadow-2xl space-y-6">
       <div className="text-center space-y-1">
-        <h2 className="text-2xl font-bold text-white">Client Portal Sign In</h2>
+        <h2 className="text-2xl font-bold text-[#14243A]">Client Portal Sign In</h2>
         <p className="text-xs text-[#64748B]">Enter your credentials to access your private collection</p>
       </div>
 
@@ -37,7 +37,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="collector@domain.com"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
             />
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••••••"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
             />
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
         </button>
       </form>
 
-      <div className="text-center pt-2 border-t border-[#E8EDF3] text-xs text-[#64748B]">
+      <div className="text-center pt-2 border-t border-[#DCE3EC] text-xs text-[#64748B]">
         Don't have an account yet?{' '}
         <Link href="/auth/register" className="text-[#F36B32] font-semibold hover:underline">
           Create Member Profile

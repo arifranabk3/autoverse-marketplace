@@ -12,9 +12,9 @@ export default function MyComparisonsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between pb-6 border-b border-[#E8EDF3]">
+      <div className="flex items-center justify-between pb-6 border-b border-[#DCE3EC]">
         <div>
-          <h1 className="text-2xl font-bold text-white">Saved Comparisons</h1>
+          <h1 className="text-2xl font-bold text-[#14243A]">Saved Comparisons</h1>
           <p className="text-xs text-[#64748B] mt-1">Quick access to your active comparison models</p>
         </div>
 
@@ -29,15 +29,15 @@ export default function MyComparisonsPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {comparedVehicles.map((veh) => (
-          <div key={veh.id} className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-3">
+          <div key={veh.id} className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl space-y-3">
             <img src={veh.images[0]} alt={veh.title} className="w-full h-32 object-cover rounded-lg" />
             <div>
-              <h4 className="font-bold text-white text-sm line-clamp-1">{veh.title}</h4>
+              <h4 className="font-bold text-[#14243A] text-sm line-clamp-1">{veh.title}</h4>
               <p className="text-xs text-[#F36B32] font-bold mt-0.5">${veh.price.toLocaleString()}</p>
             </div>
             <Link
               href="/compare"
-              className="block text-center py-2 bg-[#F0F4F8] border border-[#E8EDF3] text-xs font-semibold text-white rounded-lg hover:border-white transition-colors"
+              className="block text-center py-2 bg-[#F0F4F8] border border-[#DCE3EC] text-xs font-semibold text-[#14243A] rounded-lg hover:border-white transition-colors"
             >
               Compare Side-by-Side
             </Link>

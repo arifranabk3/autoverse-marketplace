@@ -37,7 +37,7 @@ function SearchResultsContent() {
   return (
     <div className="space-y-8">
       {/* Top Search Bar */}
-      <div className="bg-[#F0F4F8] border border-[#E8EDF3] p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-[#F0F4F8] border border-[#DCE3EC] p-6 rounded-2xl flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="w-full md:max-w-lg relative">
           <Search className="w-5 h-5 text-[#64748B] absolute left-4 top-3.5" />
           <input
@@ -45,24 +45,24 @@ function SearchResultsContent() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search make, model, year, VIN or dealership..."
-            className="w-full pl-12 pr-4 py-3 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-white text-sm focus:outline-none focus:border-[#F36B32]"
+            className="w-full pl-12 pr-4 py-3 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-[#14243A] text-sm focus:outline-none focus:border-[#F36B32]"
           />
         </div>
 
         <div className="flex flex-wrap gap-2 text-xs text-[#64748B]">
           {makeParam !== 'All' && (
-            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#E8EDF3] rounded-lg">
-              Make: <strong className="text-white">{makeParam}</strong>
+            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#DCE3EC] rounded-lg">
+              Make: <strong className="text-[#14243A]">{makeParam}</strong>
             </span>
           )}
           {bodyTypeParam !== 'All' && (
-            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#E8EDF3] rounded-lg">
-              Body: <strong className="text-white">{bodyTypeParam}</strong>
+            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#DCE3EC] rounded-lg">
+              Body: <strong className="text-[#14243A]">{bodyTypeParam}</strong>
             </span>
           )}
           {maxPriceParam !== 'All' && (
-            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#E8EDF3] rounded-lg">
-              Budget: <strong className="text-white">${Number(maxPriceParam).toLocaleString()}</strong>
+            <span className="px-3 py-1 bg-[#FFFFFF] border border-[#DCE3EC] rounded-lg">
+              Budget: <strong className="text-[#14243A]">${Number(maxPriceParam).toLocaleString()}</strong>
             </span>
           )}
         </div>
@@ -70,7 +70,7 @@ function SearchResultsContent() {
 
       {/* Results Header */}
       <div>
-        <h1 className="text-2xl font-bold text-white">
+        <h1 className="text-2xl font-bold text-[#14243A]">
           Found {results.length} Search {results.length === 1 ? 'Result' : 'Results'}
         </h1>
         <p className="text-sm text-[#64748B] mt-1">Verified and available for immediate acquisition.</p>

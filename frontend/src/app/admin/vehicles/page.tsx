@@ -6,8 +6,8 @@ import Link from 'next/link';
 export default function AdminVehiclesPage() {
   return (
     <div className="space-y-6">
-      <div className="pb-6 border-b border-[#E8EDF3]">
-        <h1 className="text-2xl font-bold text-white">Global Vehicle Inventory Management</h1>
+      <div className="pb-6 border-b border-[#DCE3EC]">
+        <h1 className="text-2xl font-bold text-[#14243A]">Global Vehicle Inventory Management</h1>
         <p className="text-xs text-[#64748B] mt-1">Review, approve, or suspend vehicle listings platform-wide.</p>
       </div>
 
@@ -15,12 +15,12 @@ export default function AdminVehiclesPage() {
         {MOCK_VEHICLES.map((veh) => (
           <div
             key={veh.id}
-            className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl flex items-center justify-between gap-4"
+            className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl flex items-center justify-between gap-4"
           >
             <div className="flex items-center gap-4">
               <img src={veh.images[0]} alt={veh.title} className="w-16 h-12 object-cover rounded-lg" />
               <div>
-                <h4 className="font-bold text-white text-sm">{veh.title}</h4>
+                <h4 className="font-bold text-[#14243A] text-sm">{veh.title}</h4>
                 <p className="text-xs text-[#64748B]">${veh.price.toLocaleString()} • Dealer: {veh.dealer.name}</p>
               </div>
             </div>
@@ -28,7 +28,7 @@ export default function AdminVehiclesPage() {
             <div className="flex items-center gap-2">
               <Link
                 href={`/cars/${veh.id}`}
-                className="p-2 bg-[#F0F4F8] border border-[#E8EDF3] rounded-lg text-white hover:border-white"
+                className="p-2 bg-[#F0F4F8] border border-[#DCE3EC] rounded-lg text-[#14243A] hover:border-white"
               >
                 <Eye className="w-4 h-4" />
               </Link>

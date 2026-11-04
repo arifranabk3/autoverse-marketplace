@@ -68,7 +68,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           
           {/* Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#E8EDF3] text-[#F36B32] text-xs font-bold shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#DCE3EC] text-[#F36B32] text-xs font-bold shadow-sm">
             <Sparkles className="w-3.5 h-3.5" />
             <span>The World’s Premier Automotive Marketplace</span>
           </div>
@@ -118,7 +118,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/sell"
-              className="px-6 py-3 rounded-xl bg-white hover:bg-[#F0F4F8] text-[#14243A] border border-[#E8EDF3] text-sm font-bold shadow-sm transition-all"
+              className="px-6 py-3 rounded-xl bg-white hover:bg-[#F0F4F8] text-[#14243A] border border-[#DCE3EC] text-sm font-bold shadow-sm transition-all"
             >
               <span>List Your Car for Sale</span>
             </Link>
@@ -180,7 +180,7 @@ export default function HomePage() {
             <Link
               key={style.id}
               href={`/cars?bodyType=${style.slug}`}
-              className="group bg-white p-4 rounded-2xl border border-[#E8EDF3] text-center shadow-card hover:shadow-card-hover hover:border-[#F36B32]/30 transition-all duration-200 flex flex-col items-center justify-between"
+              className="group bg-white p-4 rounded-2xl border border-[#DCE3EC] text-center shadow-card hover:shadow-card-hover hover:border-[#F36B32]/30 transition-all duration-200 flex flex-col items-center justify-between"
             >
               <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
                 {style.icon}
@@ -226,9 +226,9 @@ export default function HomePage() {
             <Link
               key={brand.id}
               href={`/brands/${brand.slug}`}
-              className="group bg-white p-5 rounded-2xl border border-[#E8EDF3] hover:border-[#F36B32]/40 shadow-card hover:shadow-card-hover transition-all duration-200 flex flex-col items-center text-center space-y-3"
+              className="group bg-white p-5 rounded-2xl border border-[#DCE3EC] hover:border-[#F36B32]/40 shadow-card hover:shadow-card-hover transition-all duration-200 flex flex-col items-center text-center space-y-3"
             >
-              <div className="w-16 h-16 rounded-xl overflow-hidden bg-[#F0F4F8] border border-[#E8EDF3] flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
+              <div className="w-16 h-16 rounded-xl overflow-hidden bg-[#F0F4F8] border border-[#DCE3EC] flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
                 <img
                   src={brand.logo}
                   alt={brand.name}
@@ -283,8 +283,8 @@ export default function HomePage() {
           SECTION 8: PREMIUM & LUXURY COLLECTION
          ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="p-8 rounded-3xl bg-gradient-to-br from-white via-white to-[#F0F4F8] border border-[#E8EDF3] shadow-card space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E8EDF3] pb-6">
+        <div className="p-8 rounded-3xl bg-gradient-to-br from-white via-white to-[#F0F4F8] border border-[#DCE3EC] shadow-card space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#DCE3EC] pb-6">
             <div>
               <span className="text-xs font-extrabold uppercase tracking-widest text-[#F36B32]">
                 Pinnacle Tier
@@ -402,10 +402,10 @@ export default function HomePage() {
             <Link
               key={dealer.id}
               href={`/dealers/${dealer.id}`}
-              className="group bg-white p-5 rounded-2xl border border-[#E8EDF3] shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between"
+              className="group bg-white p-5 rounded-2xl border border-[#DCE3EC] shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between"
             >
               <div className="space-y-3">
-                <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#E8EDF3] bg-[#F5F7FA]">
+                <div className="w-14 h-14 rounded-xl overflow-hidden border border-[#DCE3EC] bg-[#F5F7FA]">
                   <img
                     src={dealer.logo}
                     alt={dealer.name}
@@ -426,7 +426,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-[#E8EDF3] flex items-center justify-between text-xs">
+              <div className="pt-3 mt-3 border-t border-[#DCE3EC] flex items-center justify-between text-xs">
                 <span className="flex items-center gap-1 font-bold text-[#14243A]">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   {dealer.rating}
@@ -458,7 +458,7 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-2xl border border-[#E8EDF3] shadow-card space-y-3">
+          <div className="bg-white p-6 rounded-2xl border border-[#DCE3EC] shadow-card space-y-3">
             <div className="w-12 h-12 rounded-xl bg-[#F36B32]/10 text-[#F36B32] flex items-center justify-center">
               <ShieldCheck className="w-6 h-6" />
             </div>
@@ -468,7 +468,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-[#E8EDF3] shadow-card space-y-3">
+          <div className="bg-white p-6 rounded-2xl border border-[#DCE3EC] shadow-card space-y-3">
             <div className="w-12 h-12 rounded-xl bg-[#F36B32]/10 text-[#F36B32] flex items-center justify-center">
               <Users className="w-6 h-6" />
             </div>
@@ -478,7 +478,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-[#E8EDF3] shadow-card space-y-3">
+          <div className="bg-white p-6 rounded-2xl border border-[#DCE3EC] shadow-card space-y-3">
             <div className="w-12 h-12 rounded-xl bg-[#F36B32]/10 text-[#F36B32] flex items-center justify-center">
               <Compass className="w-6 h-6" />
             </div>
@@ -488,7 +488,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-[#E8EDF3] shadow-card space-y-3">
+          <div className="bg-white p-6 rounded-2xl border border-[#DCE3EC] shadow-card space-y-3">
             <div className="w-12 h-12 rounded-xl bg-[#F36B32]/10 text-[#F36B32] flex items-center justify-center">
               <Award className="w-6 h-6" />
             </div>
@@ -505,7 +505,7 @@ export default function HomePage() {
           SECTION 13: HOW IT WORKS
          ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E8EDF3] shadow-card">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#DCE3EC] shadow-card">
           <div className="text-center max-w-xl mx-auto space-y-2 mb-10">
             <span className="text-xs font-extrabold uppercase tracking-widest text-[#F36B32]">
               Simple 4-Step Journey
@@ -562,7 +562,7 @@ export default function HomePage() {
               <span className="text-xs font-extrabold uppercase tracking-widest text-[#F36B32]">
                 Customer Experiences
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#F0F4F8] text-[#64748B] border border-[#E8EDF3]">
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#F0F4F8] text-[#64748B] border border-[#DCE3EC]">
                 Demo Feedback
               </span>
             </div>
@@ -576,7 +576,7 @@ export default function HomePage() {
           {MOCK_TESTIMONIALS.slice(0, 3).map((item) => (
             <div
               key={item.id}
-              className="bg-white p-6 rounded-2xl border border-[#E8EDF3] shadow-card flex flex-col justify-between space-y-4"
+              className="bg-white p-6 rounded-2xl border border-[#DCE3EC] shadow-card flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-1">
@@ -589,11 +589,11 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#E8EDF3] flex items-center gap-3">
+              <div className="pt-4 border-t border-[#DCE3EC] flex items-center gap-3">
                 <img
                   src={item.avatar}
                   alt={item.name}
-                  className="w-10 h-10 rounded-full object-cover border border-[#E8EDF3]"
+                  className="w-10 h-10 rounded-full object-cover border border-[#DCE3EC]"
                 />
                 <div>
                   <h4 className="text-xs font-bold text-[#14243A]">{item.name}</h4>
@@ -626,7 +626,7 @@ export default function HomePage() {
           {MOCK_ARTICLES.slice(0, 4).map((art) => (
             <div
               key={art.id}
-              className="group bg-white rounded-2xl border border-[#E8EDF3] overflow-hidden shadow-card hover:shadow-card-hover transition-all flex flex-col"
+              className="group bg-white rounded-2xl border border-[#DCE3EC] overflow-hidden shadow-card hover:shadow-card-hover transition-all flex flex-col"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-[#F0F4F8]">
                 <img
@@ -653,7 +653,7 @@ export default function HomePage() {
                     {art.excerpt}
                   </p>
                 </div>
-                <div className="pt-2 border-t border-[#E8EDF3] flex items-center justify-between text-xs font-bold text-[#F36B32]">
+                <div className="pt-2 border-t border-[#DCE3EC] flex items-center justify-between text-xs font-bold text-[#F36B32]">
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -689,7 +689,7 @@ export default function HomePage() {
               type="email"
               required
               placeholder="Enter your VIP email address..."
-              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-[#64748B] text-sm focus:outline-none focus:border-[#F36B32] flex-1"
+              className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-[#14243A] placeholder:text-[#64748B] text-sm focus:outline-none focus:border-[#F36B32] flex-1"
             />
             <button
               type="submit"

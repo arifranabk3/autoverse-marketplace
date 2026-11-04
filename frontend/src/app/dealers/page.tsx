@@ -9,8 +9,8 @@ export default function DealerDirectoryPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <Breadcrumbs items={[{ label: 'Dealer Directory' }]} />
 
-      <div className="pb-6 border-b border-[#E8EDF3]">
-        <h1 className="text-3xl font-extrabold text-white">Certified Dealership Network</h1>
+      <div className="pb-6 border-b border-[#DCE3EC]">
+        <h1 className="text-3xl font-extrabold text-[#14243A]">Certified Dealership Network</h1>
         <p className="text-sm text-[#64748B] mt-1">
           Explore factory-authorized franchise dealerships and premier private showrooms across North America.
         </p>
@@ -20,7 +20,7 @@ export default function DealerDirectoryPage() {
         {MOCK_DEALERS.map((dealer) => (
           <div
             key={dealer.id}
-            className="bg-[#FFFFFF] border border-[#E8EDF3] rounded-2xl overflow-hidden hover:border-[#F36B32]/60 transition-all flex flex-col justify-between"
+            className="bg-[#FFFFFF] border border-[#DCE3EC] rounded-2xl overflow-hidden hover:border-[#F36B32]/60 transition-all flex flex-col justify-between"
           >
             <div>
               <div className="aspect-[21/9] w-full bg-[#F0F4F8] overflow-hidden relative">
@@ -34,7 +34,7 @@ export default function DealerDirectoryPage() {
               <div className="p-6 space-y-4">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-white hover:text-[#F36B32] transition-colors">
+                    <h3 className="text-xl font-bold text-[#14243A] hover:text-[#F36B32] transition-colors">
                       <Link href={`/dealers/${dealer.id}`}>{dealer.name}</Link>
                     </h3>
                     <p className="text-xs text-[#F36B32] font-semibold mt-0.5">{dealer.tagline}</p>
@@ -43,7 +43,7 @@ export default function DealerDirectoryPage() {
                         <MapPin className="w-3.5 h-3.5 text-[#F36B32]" /> {dealer.location}
                       </span>
                       <span>•</span>
-                      <span className="flex items-center gap-1 text-white">
+                      <span className="flex items-center gap-1 text-[#14243A]">
                         <Star className="w-3.5 h-3.5 text-amber-400 fill-current" /> {dealer.rating} ({dealer.reviewsCount})
                       </span>
                     </div>
@@ -56,8 +56,8 @@ export default function DealerDirectoryPage() {
               </div>
             </div>
 
-            <div className="p-6 pt-0 border-t border-[#E8EDF3]/50 flex items-center justify-between text-xs text-[#64748B] mt-2">
-              <span className="font-semibold text-white">{dealer.inventoryCount} Active Vehicles</span>
+            <div className="p-6 pt-0 border-t border-[#DCE3EC]/50 flex items-center justify-between text-xs text-[#64748B] mt-2">
+              <span className="font-semibold text-[#14243A]">{dealer.inventoryCount} Active Vehicles</span>
               <Link
                 href={`/dealers/${dealer.id}`}
                 className="text-[#F36B32] font-bold flex items-center gap-1 hover:translate-x-1 transition-transform"

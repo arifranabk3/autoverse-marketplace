@@ -12,9 +12,9 @@ export default function AdminCategoriesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between pb-6 border-b border-[#E8EDF3]">
+      <div className="flex items-center justify-between pb-6 border-b border-[#DCE3EC]">
         <div>
-          <h1 className="text-2xl font-bold text-white">Vehicle Taxonomies & Body Styles</h1>
+          <h1 className="text-2xl font-bold text-[#14243A]">Vehicle Taxonomies & Body Styles</h1>
           <p className="text-xs text-[#64748B] mt-1">Configure global search filters, categorization facets, and feature tags</p>
         </div>
 
@@ -26,9 +26,9 @@ export default function AdminCategoriesPage() {
 
       <div className="space-y-3">
         {categories.map((c) => (
-          <div key={c.id} className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl flex items-center justify-between">
+          <div key={c.id} className="p-4 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl flex items-center justify-between">
             <div>
-              <h4 className="font-bold text-white text-sm">{c.name}</h4>
+              <h4 className="font-bold text-[#14243A] text-sm">{c.name}</h4>
               <p className="text-xs text-[#64748B]">{c.count} Active Vehicles Classified</p>
             </div>
             <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 rounded text-[10px] font-bold">

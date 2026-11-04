@@ -36,7 +36,7 @@ export default function FAQPage() {
 
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <span className="text-xs uppercase tracking-widest text-[#F36B32] font-bold">Knowledge Base</span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#14243A]">Frequently Asked Questions</h1>
         <p className="text-sm text-[#64748B]">
           Everything you need to know about purchasing, selling, escrow security, and global vehicle transport.
         </p>
@@ -48,7 +48,7 @@ export default function FAQPage() {
           return (
             <div
               key={index}
-              className="bg-[#F0F4F8] border border-[#E8EDF3] rounded-2xl overflow-hidden transition-colors"
+              className="bg-[#F0F4F8] border border-[#DCE3EC] rounded-2xl overflow-hidden transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -58,7 +58,7 @@ export default function FAQPage() {
                 <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180 text-[#F36B32]' : 'text-[#64748B]'}`} />
               </button>
               {isOpen && (
-                <div className="px-6 pb-6 text-sm text-[#64748B] leading-relaxed border-t border-[#E8EDF3]/50 pt-4">
+                <div className="px-6 pb-6 text-sm text-[#64748B] leading-relaxed border-t border-[#DCE3EC]/50 pt-4">
                   {faq.a}
                 </div>
               )}

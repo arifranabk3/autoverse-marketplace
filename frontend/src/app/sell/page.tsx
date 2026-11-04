@@ -13,7 +13,7 @@ export default function SellYourCarPage() {
 
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <span className="text-xs uppercase tracking-widest text-[#F36B32] font-bold">Consignment & Instant Liquidity</span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Sell or Consign Your Vehicle</h1>
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#14243A]">Sell or Consign Your Vehicle</h1>
         <p className="text-sm text-[#64748B]">
           Reach verified international collectors or receive guaranteed instant purchase offers from our network of authorized luxury dealers.
         </p>
@@ -24,7 +24,7 @@ export default function SellYourCarPage() {
           <div className="w-16 h-16 rounded-full bg-[#F36B32]/20 text-[#F36B32] flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-8 h-8" />
           </div>
-          <h2 className="text-2xl font-bold text-white">Consignment Request Submitted</h2>
+          <h2 className="text-2xl font-bold text-[#14243A]">Consignment Request Submitted</h2>
           <p className="text-sm text-[#64748B] max-w-md mx-auto">
             Our private acquisitions team is running VIN telemetry and valuation comp models. You will receive an offer packet within 4 business hours.
           </p>
@@ -35,11 +35,11 @@ export default function SellYourCarPage() {
             e.preventDefault();
             setSubmitted(true);
           }}
-          className="bg-[#F0F4F8] border border-[#E8EDF3] rounded-3xl p-6 sm:p-10 space-y-8"
+          className="bg-[#F0F4F8] border border-[#DCE3EC] rounded-3xl p-6 sm:p-10 space-y-8"
         >
           {/* Section 1: Vehicle Identifiers */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white border-b border-[#E8EDF3] pb-3">
+            <h3 className="text-lg font-bold text-[#14243A] border-b border-[#DCE3EC] pb-3">
               1. Vehicle Identification & Specifications
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -49,7 +49,7 @@ export default function SellYourCarPage() {
                   type="text"
                   placeholder="e.g. WP0AF2A97RS..."
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
 
@@ -59,7 +59,7 @@ export default function SellYourCarPage() {
                   type="text"
                   placeholder="e.g. 2024 Porsche 911 GT3 RS"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
 
@@ -69,7 +69,7 @@ export default function SellYourCarPage() {
                   type="number"
                   placeholder="e.g. 2500"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
 
@@ -79,7 +79,7 @@ export default function SellYourCarPage() {
                   type="number"
                   placeholder="e.g. 320000"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
             </div>
@@ -87,19 +87,19 @@ export default function SellYourCarPage() {
 
           {/* Section 2: Uploads / Condition */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white border-b border-[#E8EDF3] pb-3">
+            <h3 className="text-lg font-bold text-[#14243A] border-b border-[#DCE3EC] pb-3">
               2. Vehicle Photos & Condition
             </h3>
-            <div className="border-2 border-dashed border-[#E8EDF3] rounded-2xl p-8 text-center bg-[#FFFFFF] hover:border-[#F36B32] transition-colors cursor-pointer">
+            <div className="border-2 border-dashed border-[#DCE3EC] rounded-2xl p-8 text-center bg-[#FFFFFF] hover:border-[#F36B32] transition-colors cursor-pointer">
               <UploadCloud className="w-10 h-10 text-[#F36B32] mx-auto mb-2" />
-              <p className="text-sm font-semibold text-white">Drag and drop high-res exterior and interior photos</p>
+              <p className="text-sm font-semibold text-[#14243A]">Drag and drop high-res exterior and interior photos</p>
               <p className="text-xs text-[#64748B] mt-1">Supports PNG, JPG, HEIC up to 50MB per batch</p>
             </div>
           </div>
 
           {/* Section 3: Owner Details */}
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-white border-b border-[#E8EDF3] pb-3">
+            <h3 className="text-lg font-bold text-[#14243A] border-b border-[#DCE3EC] pb-3">
               3. Owner Contact Information
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -109,7 +109,7 @@ export default function SellYourCarPage() {
                   type="text"
                   placeholder="First & Last Name"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
 
@@ -119,7 +119,7 @@ export default function SellYourCarPage() {
                   type="email"
                   placeholder="name@domain.com"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
 
@@ -129,7 +129,7 @@ export default function SellYourCarPage() {
                   type="tel"
                   placeholder="+1 (555) 000-0000"
                   required
-                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
+                  className="w-full px-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
                 />
               </div>
             </div>

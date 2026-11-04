@@ -50,7 +50,7 @@ export default function CarsPage() {
       <Breadcrumbs items={[{ label: 'Browse Cars' }]} />
 
       {/* Header Title & Sorting Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#E8EDF3] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#DCE3EC] gap-4">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-3xl font-black text-[#14243A]">Verified Vehicle Inventory</h1>
@@ -67,14 +67,14 @@ export default function CarsPage() {
           {/* Mobile Filter Toggle */}
           <button
             onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-            className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#E8EDF3] text-sm text-[#14243A] font-bold shadow-sm"
+            className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white border border-[#DCE3EC] text-sm text-[#14243A] font-bold shadow-sm"
           >
             <SlidersHorizontal className="w-4 h-4 text-[#F36B32]" />
             <span>Filters ({filteredVehicles.length})</span>
           </button>
 
           {/* Sort Dropdown */}
-          <div className="flex items-center gap-2 bg-white border border-[#E8EDF3] rounded-xl px-3.5 py-2 text-sm text-[#14243A] shadow-sm">
+          <div className="flex items-center gap-2 bg-white border border-[#DCE3EC] rounded-xl px-3.5 py-2 text-sm text-[#14243A] shadow-sm">
             <ArrowUpDown className="w-4 h-4 text-[#F36B32]" />
             <select
               value={filters.sortBy || 'price_desc'}
@@ -111,7 +111,7 @@ export default function CarsPage() {
               ))}
             </div>
           ) : (
-            <div className="p-12 text-center bg-white rounded-3xl border border-[#E8EDF3] shadow-card space-y-4">
+            <div className="p-12 text-center bg-white rounded-3xl border border-[#DCE3EC] shadow-card space-y-4">
               <div className="w-16 h-16 rounded-2xl bg-[#F0F4F8] text-[#F36B32] mx-auto flex items-center justify-center">
                 <SlidersHorizontal className="w-8 h-8" />
               </div>
