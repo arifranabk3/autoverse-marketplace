@@ -13,9 +13,9 @@ export default function SavedVehiclesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="pb-6 border-b border-[#2A3039]">
+      <div className="pb-6 border-b border-[#E8EDF3]">
         <h1 className="text-2xl font-bold text-white">Saved Vehicles & Watchlist</h1>
-        <p className="text-xs text-[#A1A8B3] mt-1">Review saved models and monitor market price revisions.</p>
+        <p className="text-xs text-[#64748B] mt-1">Review saved models and monitor market price revisions.</p>
       </div>
 
       {savedVehicles.length > 0 ? (

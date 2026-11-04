@@ -30,9 +30,9 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col lg:flex-row gap-8 items-start">
         {/* Dealer Sidebar */}
-        <aside className="w-full lg:w-64 bg-[#14181E] border border-[#2A3039] rounded-2xl p-4 space-y-2 flex-shrink-0">
-          <div className="p-3 border-b border-[#2A3039] mb-2 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#FF6B00] flex items-center justify-center text-white font-bold text-sm">
+        <aside className="w-full lg:w-64 bg-[#F0F4F8] border border-[#E8EDF3] rounded-2xl p-4 space-y-2 flex-shrink-0">
+          <div className="p-3 border-b border-[#E8EDF3] mb-2 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#F36B32] flex items-center justify-center text-[#14243A] font-bold text-sm">
               AP
             </div>
             <div>
@@ -53,8 +53,8 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
                   href={link.href}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-[#FF6B00] text-white shadow-md shadow-[#FF6B00]/20'
-                      : 'text-[#A1A8B3] hover:text-white hover:bg-[#1B2028]'
+                      ? 'bg-[#F36B32] text-white shadow-md shadow-[#F36B32]/20'
+                      : 'text-[#64748B] hover:text-white hover:bg-[#FFFFFF]'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -64,10 +64,10 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
             })}
           </nav>
 
-          <div className="pt-4 border-t border-[#2A3039] mt-4">
+          <div className="pt-4 border-t border-[#E8EDF3] mt-4">
             <Link
               href="/"
-              className="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#A1A8B3] hover:text-white transition-colors"
+              className="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#64748B] hover:text-white transition-colors"
             >
               <LogOut className="w-4 h-4" />
               <span>Exit Portal</span>
@@ -76,7 +76,7 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
         </aside>
 
         {/* Dealer Body */}
-        <div className="flex-1 w-full bg-[#14181E] border border-[#2A3039] rounded-2xl p-6 sm:p-8">
+        <div className="flex-1 w-full bg-[#F0F4F8] border border-[#E8EDF3] rounded-2xl p-6 sm:p-8">
           {children}
         </div>
       </div>

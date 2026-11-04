@@ -8,15 +8,15 @@ export default function DashboardOverviewPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#2A3039] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#E8EDF3] gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Client Portfolio Overview</h1>
-          <p className="text-xs text-[#A1A8B3] mt-1">Welcome back, Alexander. Track your inquiries and active vehicles.</p>
+          <p className="text-xs text-[#64748B] mt-1">Welcome back, Alexander. Track your inquiries and active vehicles.</p>
         </div>
 
         <Link
           href="/dashboard/create-listing"
-          className="px-4 py-2 rounded-xl bg-[#FF6B00] text-white text-xs font-bold hover:bg-[#E55F00] transition-colors self-start"
+          className="px-4 py-2 rounded-xl bg-[#F36B32] text-white text-xs font-bold hover:bg-[#DE561D] transition-colors self-start"
         >
           + Add New Vehicle
         </Link>
@@ -24,23 +24,23 @@ export default function DashboardOverviewPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl space-y-1">
-          <span className="text-[10px] uppercase font-bold text-[#A1A8B3]">Active Listings</span>
+        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+          <span className="text-[10px] uppercase font-bold text-[#64748B]">Active Listings</span>
           <p className="text-2xl font-extrabold text-white">2</p>
         </div>
 
-        <div className="p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl space-y-1">
-          <span className="text-[10px] uppercase font-bold text-[#A1A8B3]">Saved Cars</span>
+        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+          <span className="text-[10px] uppercase font-bold text-[#64748B]">Saved Cars</span>
           <p className="text-2xl font-extrabold text-white">5</p>
         </div>
 
-        <div className="p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl space-y-1">
-          <span className="text-[10px] uppercase font-bold text-[#A1A8B3]">Unread Inquiries</span>
-          <p className="text-2xl font-extrabold text-[#FF6B00]">3</p>
+        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+          <span className="text-[10px] uppercase font-bold text-[#64748B]">Unread Inquiries</span>
+          <p className="text-2xl font-extrabold text-[#F36B32]">3</p>
         </div>
 
-        <div className="p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl space-y-1">
-          <span className="text-[10px] uppercase font-bold text-[#A1A8B3]">Escrow Deposits</span>
+        <div className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl space-y-1">
+          <span className="text-[10px] uppercase font-bold text-[#64748B]">Escrow Deposits</span>
           <p className="text-2xl font-extrabold text-white">$45,000</p>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function DashboardOverviewPage() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold text-white">Your Listed Vehicles</h3>
-          <Link href="/dashboard/listings" className="text-xs text-[#FF6B00] hover:underline">
+          <Link href="/dashboard/listings" className="text-xs text-[#F36B32] hover:underline">
             View All
           </Link>
         </div>
@@ -58,13 +58,13 @@ export default function DashboardOverviewPage() {
           {activeListings.map((veh) => (
             <div
               key={veh.id}
-              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl gap-4"
+              className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl gap-4"
             >
               <div className="flex items-center gap-4">
                 <img src={veh.images[0]} alt={veh.title} className="w-20 h-14 object-cover rounded-lg" />
                 <div>
                   <h4 className="font-bold text-white text-sm">{veh.title}</h4>
-                  <p className="text-xs text-[#A1A8B3] mt-0.5">${veh.price.toLocaleString()} • {veh.mileage.toLocaleString()} mi</p>
+                  <p className="text-xs text-[#64748B] mt-0.5">${veh.price.toLocaleString()} • {veh.mileage.toLocaleString()} mi</p>
                 </div>
               </div>
 
@@ -74,7 +74,7 @@ export default function DashboardOverviewPage() {
                 </span>
                 <Link
                   href={`/dashboard/edit-listing?id=${veh.id}`}
-                  className="px-3 py-1.5 rounded-lg bg-[#14181E] border border-[#2A3039] text-xs font-semibold text-white hover:border-white transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-[#F0F4F8] border border-[#E8EDF3] text-xs font-semibold text-white hover:border-white transition-colors"
                 >
                   Edit
                 </Link>

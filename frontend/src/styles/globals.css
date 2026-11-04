@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --bg-main: #0B0D10;
-    --bg-secondary: #14181E;
-    --bg-card: #1B2028;
-    --accent: #FF6B00;
-    --border: #2A3039;
-    --text-primary: #FFFFFF;
-    --text-secondary: #A1A8B3;
+    --bg-main: #F5F7FA;
+    --bg-card: #FFFFFF;
+    --bg-secondary: #F0F4F8;
+    --accent: #F36B32;
+    --border: #E8EDF3;
+    --text-primary: #14243A;
+    --text-secondary: #64748B;
   }
 
   body {
@@ -20,19 +20,19 @@
     overflow-x: hidden;
   }
 
-  /* Custom scrollbar for dark automotive theme */
+  /* Custom scrollbar for premium light theme */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #0B0D10;
+    background: #F5F7FA;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2A3039;
+    background: #CBD5E1;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF6B00;
+    background: #F36B32;
   }
 }

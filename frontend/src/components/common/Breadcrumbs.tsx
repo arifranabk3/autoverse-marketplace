@@ -13,7 +13,7 @@ interface BreadcrumbsProps {
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
   return (
-    <nav className="flex items-center space-x-2 text-xs text-[#A1A8B3] py-4" aria-label="Breadcrumb">
+    <nav className="flex items-center space-x-2 text-xs text-[#64748B] py-4" aria-label="Breadcrumb">
       <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
         <Home className="w-3.5 h-3.5" />
         <span className="hidden sm:inline">Home</span>
@@ -23,7 +23,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
         const isLast = index === items.length - 1;
         return (
           <React.Fragment key={item.label}>
-            <ChevronRight className="w-3.5 h-3.5 text-[#2A3039]" />
+            <ChevronRight className="w-3.5 h-3.5 text-[#E8EDF3]" />
             {item.href && !isLast ? (
               <Link href={item.href} className="hover:text-white transition-colors">
                 {item.label}

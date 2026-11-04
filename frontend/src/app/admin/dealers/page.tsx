@@ -5,19 +5,19 @@ import { ShieldCheck, Building2 } from 'lucide-react';
 export default function AdminDealersPage() {
   return (
     <div className="space-y-6">
-      <div className="pb-6 border-b border-[#2A3039]">
+      <div className="pb-6 border-b border-[#E8EDF3]">
         <h1 className="text-2xl font-bold text-white">Dealership Network Verification</h1>
-        <p className="text-xs text-[#A1A8B3] mt-1">Audit dealer licenses, active escrow bonding, and showroom compliance</p>
+        <p className="text-xs text-[#64748B] mt-1">Audit dealer licenses, active escrow bonding, and showroom compliance</p>
       </div>
 
       <div className="space-y-3">
         {MOCK_DEALERS.map((dealer) => (
-          <div key={dealer.id} className="p-4 bg-[#1B2028] border border-[#2A3039] rounded-xl flex items-center justify-between">
+          <div key={dealer.id} className="p-4 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl flex items-center justify-between">
             <div className="flex items-center gap-4">
               <img src={dealer.logo} alt={dealer.name} className="w-12 h-12 object-cover rounded-xl" />
               <div>
                 <h4 className="font-bold text-white text-sm">{dealer.name}</h4>
-                <p className="text-xs text-[#A1A8B3]">{dealer.location} • {dealer.inventoryCount} Units Live</p>
+                <p className="text-xs text-[#64748B]">{dealer.location} • {dealer.inventoryCount} Units Live</p>
               </div>
             </div>
 
@@ -25,7 +25,7 @@ export default function AdminDealersPage() {
               <span className="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold">
                 Licensed & Bonded
               </span>
-              <button className="px-3 py-1.5 bg-[#14181E] border border-[#2A3039] text-xs font-semibold text-white rounded-lg hover:border-white">
+              <button className="px-3 py-1.5 bg-[#F0F4F8] border border-[#E8EDF3] text-xs font-semibold text-white rounded-lg hover:border-white">
                 Audit Dealer
               </button>
             </div>

@@ -6,69 +6,71 @@ import { usePathname } from 'next/navigation';
 import { 
   Car, 
   Search, 
-  Heart, 
   SlidersHorizontal, 
+  Heart, 
   Menu, 
   X, 
+  PlusCircle, 
   User, 
+  Layers, 
   Building2, 
-  ShieldCheck, 
-  ArrowRight,
-  PlusCircle
+  Scale, 
+  ShieldCheck,
+  PhoneCall,
+  Sparkles
 } from 'lucide-react';
 import { useSavedVehicles } from '@/context/SavedVehiclesContext';
 
-export const Header: React.FC = () => {
+export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { savedIds, comparedIds } = useSavedVehicles();
+  const { savedIds } = useSavedVehicles();
 
   const navLinks = [
-    { label: 'Browse Cars', href: '/cars' },
+    { label: 'Buy Cars', href: '/cars' },
     { label: 'Brands', href: '/brands' },
     { label: 'Dealers', href: '/dealers' },
-    { label: 'Compare', href: '/compare', badge: comparedIds.length > 0 ? comparedIds.length : null },
-    { label: 'Sell Your Car', href: '/sell', highlight: true },
+    { label: 'Compare', href: '/compare', badge: '2' },
+    { label: 'About', href: '/about' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0B0D10]/90 backdrop-blur-md border-b border-[#2A3039]">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#E8EDF3] transition-all shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          
+          {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#FF8533] flex items-center justify-center text-white shadow-lg shadow-[#FF6B00]/20 group-hover:scale-105 transition-transform">
-              <Car className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#F36B32] to-[#DE561D] flex items-center justify-center shadow-md shadow-[#F36B32]/25 group-hover:scale-105 transition-transform duration-200">
+              <Car className="w-6 h-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-wider text-white">
-                AUTO<span className="text-[#FF6B00]">VERSE</span>
+              <span className="text-2xl font-black tracking-tight text-[#14243A] leading-none group-hover:text-[#F36B32] transition-colors">
+                AUTOVERSE
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-[#A1A8B3] -mt-1 font-semibold">
-                Prestige Marketplace
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#64748B] mt-1">
+                PREMIUM AUTOMOTIVE
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
               return (
                 <Link
-                  key={link.label}
+                  key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors flex items-center gap-1.5 ${
-                    link.highlight
-                      ? 'text-[#FF6B00] hover:text-[#FF8533]'
-                      : isActive
-                      ? 'text-white font-semibold'
-                      : 'text-[#A1A8B3] hover:text-white'
+                  className={`relative px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-150 flex items-center gap-1.5 ${
+                    isActive 
+                      ? 'text-[#F36B32] bg-[#F36B32]/10' 
+                      : 'text-[#14243A] hover:text-[#F36B32] hover:bg-[#F0F4F8]'
                   }`}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
                   {link.badge && (
-                    <span className="px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-[#FF6B00] text-white">
+                    <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-[#F36B32] text-white">
                       {link.badge}
                     </span>
                   )}
@@ -77,57 +79,64 @@ export const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* Action Icons & Profiles */}
-          <div className="hidden lg:flex items-center gap-5">
+          {/* Action Hub */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Saved Vehicles Counter */}
             <Link
               href="/dashboard/saved"
-              className="relative p-2 rounded-lg text-[#A1A8B3] hover:text-white hover:bg-[#14181E] border border-transparent hover:border-[#2A3039] transition-all"
+              className="relative p-2.5 rounded-xl border border-[#E8EDF3] bg-[#F5F7FA] text-[#14243A] hover:text-[#F36B32] hover:border-[#F36B32]/30 hover:bg-white transition-all shadow-sm group"
               title="Saved Vehicles"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
               {savedIds.length > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#FF6B00] text-[10px] font-bold flex items-center justify-center text-white">
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#F36B32] text-white text-[10px] font-extrabold flex items-center justify-center border-2 border-white shadow-sm">
                   {savedIds.length}
                 </span>
               )}
             </Link>
 
-            <div className="h-6 w-px bg-[#2A3039]" />
+            {/* Sell Car CTA */}
+            <Link
+              href="/sell"
+              className="px-4 py-2.5 rounded-xl text-sm font-semibold text-[#14243A] bg-[#F0F4F8] hover:bg-[#E8EDF3] border border-[#E8EDF3] transition-colors flex items-center gap-2"
+            >
+              <span>Sell Your Car</span>
+            </Link>
 
-            {/* Portal Navigation Dropdown Buttons */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="/auth/login"
-                className="px-4 py-2 text-sm font-medium text-white hover:text-[#FF6B00] transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/dashboard/create-listing"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-lg bg-[#FF6B00] text-white hover:bg-[#E55F00] shadow-md shadow-[#FF6B00]/25 transition-all"
-              >
-                <PlusCircle className="w-4 h-4" />
-                List Vehicle
-              </Link>
-            </div>
+            {/* Login Link */}
+            <Link
+              href="/auth/login"
+              className="px-4 py-2.5 rounded-xl text-sm font-semibold text-[#64748B] hover:text-[#14243A] transition-colors"
+            >
+              Sign In
+            </Link>
+
+            {/* List Vehicle Button */}
+            <Link
+              href="/dealer/add-vehicle"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F36B32] hover:bg-[#DE561D] text-white text-sm font-bold shadow-md shadow-[#F36B32]/25 hover:shadow-lg hover:shadow-[#F36B32]/35 transition-all duration-200 active:scale-95"
+            >
+              <PlusCircle className="w-4 h-4" />
+              <span>List Vehicle</span>
+            </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="flex md:hidden items-center gap-3">
+          {/* Mobile menu button */}
+          <div className="flex md:hidden items-center gap-2">
             <Link
               href="/dashboard/saved"
-              className="p-2 text-[#A1A8B3] hover:text-white relative"
+              className="relative p-2 rounded-lg text-[#14243A]"
             >
-              <Heart className="w-5 h-5" />
+              <Heart className="w-6 h-6" />
               {savedIds.length > 0 && (
-                <span className="absolute top-1 right-1 w-3.5 h-3.5 rounded-full bg-[#FF6B00] text-[9px] font-bold flex items-center justify-center text-white">
+                <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-[#F36B32] text-white text-[9px] font-bold flex items-center justify-center">
                   {savedIds.length}
                 </span>
               )}
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#A1A8B3] hover:text-white hover:bg-[#14181E] border border-[#2A3039]"
+              className="p-2 rounded-xl text-[#14243A] hover:bg-[#F0F4F8] transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -136,60 +145,52 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-[#2A3039] bg-[#0B0D10] px-4 pt-4 pb-6 space-y-4">
-          <nav className="flex flex-col space-y-3">
+        <div className="md:hidden border-b border-[#E8EDF3] bg-white px-4 pt-4 pb-6 space-y-4 shadow-lg animate-in slide-in-from-top-4 duration-200">
+          <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-base font-medium text-[#A1A8B3] hover:text-white hover:bg-[#14181E]"
+                className="px-4 py-3 rounded-xl bg-[#F5F7FA] text-sm font-semibold text-[#14243A] hover:bg-[#F36B32]/10 hover:text-[#F36B32] transition-colors flex items-center justify-between"
               >
-                {link.label}
+                <span>{link.label}</span>
+                {link.badge && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-[#F36B32] text-white">
+                    {link.badge}
+                  </span>
+                )}
               </Link>
             ))}
-          </nav>
+          </div>
 
-          <div className="pt-4 border-t border-[#2A3039] flex flex-col gap-3">
+          <div className="pt-2 border-t border-[#E8EDF3] flex flex-col gap-2">
             <Link
-              href="/dashboard"
+              href="/sell"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-[#A1A8B3] hover:text-white"
+              className="w-full py-3 rounded-xl bg-[#F0F4F8] text-center text-sm font-bold text-[#14243A]"
             >
-              <User className="w-4 h-4 text-[#FF6B00]" />
-              Buyer / Collector Dashboard
+              Sell Your Car
             </Link>
             <Link
-              href="/dealer"
+              href="/dealer/add-vehicle"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-[#A1A8B3] hover:text-white"
+              className="w-full py-3 rounded-xl bg-[#F36B32] text-center text-sm font-bold text-white shadow-md shadow-[#F36B32]/20"
             >
-              <Building2 className="w-4 h-4 text-[#FF6B00]" />
-              Dealer Portal
+              List Vehicle
             </Link>
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-[#A1A8B3] hover:text-white"
-            >
-              <ShieldCheck className="w-4 h-4 text-[#FF6B00]" />
-              Admin Portal
-            </Link>
-
-            <Link
-              href="/dashboard/create-listing"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 mt-2 rounded-lg bg-[#FF6B00] text-white font-semibold text-center"
-            >
-              <PlusCircle className="w-4 h-4" />
-              List Your Car
-            </Link>
+            <div className="flex items-center justify-center gap-4 pt-2 text-xs font-semibold text-[#64748B]">
+              <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>Sign In</Link>
+              <span>•</span>
+              <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)}>Create Account</Link>
+              <span>•</span>
+              <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
+            </div>
           </div>
         </div>
       )}
     </header>
   );
-};
-
+}

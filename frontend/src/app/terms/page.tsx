@@ -3,12 +3,12 @@ import { Breadcrumbs } from '@/components/common/Breadcrumbs';
 
 export default function TermsPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#A1A8B3]">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-[#64748B]">
       <Breadcrumbs items={[{ label: 'Terms & Conditions' }]} />
 
-      <div className="border-b border-[#2A3039] pb-6">
+      <div className="border-b border-[#E8EDF3] pb-6">
         <h1 className="text-3xl font-extrabold text-white">Terms of Service</h1>
-        <p className="text-xs text-[#A1A8B3] mt-2">Last Updated: November 2026</p>
+        <p className="text-xs text-[#64748B] mt-2">Last Updated: November 2026</p>
       </div>
 
       <div className="space-y-6 text-sm leading-relaxed">

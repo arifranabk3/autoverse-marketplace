@@ -35,9 +35,9 @@ export default function FAQPage() {
       <Breadcrumbs items={[{ label: 'FAQ' }]} />
 
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <span className="text-xs uppercase tracking-widest text-[#FF6B00] font-bold">Knowledge Base</span>
+        <span className="text-xs uppercase tracking-widest text-[#F36B32] font-bold">Knowledge Base</span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h1>
-        <p className="text-sm text-[#A1A8B3]">
+        <p className="text-sm text-[#64748B]">
           Everything you need to know about purchasing, selling, escrow security, and global vehicle transport.
         </p>
       </div>
@@ -48,17 +48,17 @@ export default function FAQPage() {
           return (
             <div
               key={index}
-              className="bg-[#14181E] border border-[#2A3039] rounded-2xl overflow-hidden transition-colors"
+              className="bg-[#F0F4F8] border border-[#E8EDF3] rounded-2xl overflow-hidden transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="w-full p-6 text-left flex items-center justify-between gap-4 text-white font-bold text-base hover:text-[#FF6B00] transition-colors"
+                className="w-full p-6 text-left flex items-center justify-between gap-4 text-[#14243A] font-bold text-base hover:text-[#F36B32] transition-colors"
               >
                 <span>{faq.q}</span>
-                <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180 text-[#FF6B00]' : 'text-[#A1A8B3]'}`} />
+                <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180 text-[#F36B32]' : 'text-[#64748B]'}`} />
               </button>
               {isOpen && (
-                <div className="px-6 pb-6 text-sm text-[#A1A8B3] leading-relaxed border-t border-[#2A3039]/50 pt-4">
+                <div className="px-6 pb-6 text-sm text-[#64748B] leading-relaxed border-t border-[#E8EDF3]/50 pt-4">
                   {faq.a}
                 </div>
               )}

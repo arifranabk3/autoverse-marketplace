@@ -8,9 +8,9 @@ import { SavedVehiclesProvider } from '@/context/SavedVehiclesContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AUTOVERSE | Premium Enterprise Automotive Marketplace',
-  description: 'The world’s definitive destination for buying, selling, and comparing exotic, luxury, and high-performance supercars.',
-  keywords: ['supercars', 'luxury cars', 'porsche', 'ferrari', 'lamborghini', 'exotic car marketplace'],
+  title: 'AUTOVERSE | Premium Automotive Marketplace',
+  description: 'The world’s definitive destination for buying, selling, and comparing verified premium luxury, performance, and electric vehicles.',
+  keywords: ['automotive marketplace', 'luxury cars', 'porsche', 'ferrari', 'bmw', 'mercedes', 'buy cars online'],
 };
 
 export default function RootLayout({
@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-[#0B0D10] text-white min-h-screen flex flex-col`}>
+    <html lang="en">
+      <body className={`${inter.className} bg-[#F5F7FA] text-[#14243A] min-h-screen flex flex-col antialiased selection:bg-[#F36B32] selection:text-white`}>
         <SavedVehiclesProvider>
           <Header />
           <main className="flex-1">
@@ -32,4 +32,3 @@ export default function RootLayout({
     </html>
   );
 }
-

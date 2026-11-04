@@ -8,9 +8,9 @@ export default function AdminSettingsPage() {
 
   return (
     <div className="space-y-6 max-w-2xl">
-      <div className="pb-6 border-b border-[#2A3039]">
+      <div className="pb-6 border-b border-[#E8EDF3]">
         <h1 className="text-2xl font-bold text-white">Global Platform Governance Settings</h1>
-        <p className="text-xs text-[#A1A8B3] mt-1">Configure transaction escrow requirements, API rate limits, and KYC enforcement</p>
+        <p className="text-xs text-[#64748B] mt-1">Configure transaction escrow requirements, API rate limits, and KYC enforcement</p>
       </div>
 
       {saved && (
@@ -28,27 +28,27 @@ export default function AdminSettingsPage() {
         className="space-y-4"
       >
         <div>
-          <label className="block text-xs font-semibold text-[#A1A8B3] mb-1">Marketplace Commission Rate (%)</label>
+          <label className="block text-xs font-semibold text-[#64748B] mb-1">Marketplace Commission Rate (%)</label>
           <input
             type="number"
             step="0.1"
             defaultValue="2.5"
-            className="w-full px-4 py-2 bg-[#1B2028] border border-[#2A3039] rounded-xl text-sm text-white focus:outline-none focus:border-[#FF6B00]"
+            className="w-full px-4 py-2 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-[#A1A8B3] mb-1">Mandatory Escrow Threshold (USD)</label>
+          <label className="block text-xs font-semibold text-[#64748B] mb-1">Mandatory Escrow Threshold (USD)</label>
           <input
             type="number"
             defaultValue="50000"
-            className="w-full px-4 py-2 bg-[#1B2028] border border-[#2A3039] rounded-xl text-sm text-white focus:outline-none focus:border-[#FF6B00]"
+            className="w-full px-4 py-2 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-[#A1A8B3] mb-1">DME ECU Diagnostic Audit Requirement</label>
-          <select className="w-full px-4 py-2 bg-[#1B2028] border border-[#2A3039] rounded-xl text-sm text-white focus:outline-none focus:border-[#FF6B00]">
+          <label className="block text-xs font-semibold text-[#64748B] mb-1">DME ECU Diagnostic Audit Requirement</label>
+          <select className="w-full px-4 py-2 bg-[#FFFFFF] border border-[#E8EDF3] rounded-xl text-sm text-white focus:outline-none focus:border-[#F36B32]">
             <option>Strict (Mandatory for all listings over $150k)</option>
             <option>Advisory</option>
           </select>
@@ -56,7 +56,7 @@ export default function AdminSettingsPage() {
 
         <button
           type="submit"
-          className="py-2.5 px-6 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs"
+          className="py-2.5 px-6 rounded-xl bg-red-600 hover:bg-red-700 text-[#14243A] font-bold text-xs"
         >
           Save Global Platform Rules
         </button>
