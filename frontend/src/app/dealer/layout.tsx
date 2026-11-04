@@ -29,16 +29,16 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col lg:flex-row gap-8 items-start">
-        {/* Dealer Sidebar */}
-        <aside className="w-full lg:w-64 bg-[#F0F4F8] border border-[#DCE3EC] rounded-2xl p-4 space-y-2 flex-shrink-0">
-          <div className="p-3 border-b border-[#DCE3EC] mb-2 flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#F36B32] flex items-center justify-center text-[#14243A] font-bold text-sm">
+        {/* Dark Navy Dealer Sidebar */}
+        <aside className="w-full lg:w-64 bg-[#101D2D] border border-[#34465B] rounded-2xl p-4 space-y-2 flex-shrink-0 shadow-dark-card text-white">
+          <div className="p-3 border-b border-[#34465B] mb-2 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#F36B32] flex items-center justify-center text-white font-black text-sm shadow-md">
               AP
             </div>
             <div>
-              <h3 className="font-bold text-[#14243A] text-xs truncate">Apex Prestige Motors</h3>
+              <h3 className="font-bold text-white text-xs truncate">Apex Prestige Motors</h3>
               <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
-                <ShieldCheck className="w-3 h-3" /> Certified Franchise
+                <ShieldCheck className="w-3 h-3 text-[#F36B32]" /> Certified Franchise
               </span>
             </div>
           </div>
@@ -53,21 +53,21 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
                   href={link.href}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-[#F36B32] text-white shadow-md shadow-[#F36B32]/20'
-                      : 'text-[#64748B] hover:text-white hover:bg-[#FFFFFF]'
+                      ? 'bg-[#F36B32] text-white shadow-md shadow-[#F36B32]/30 font-bold'
+                      : 'text-[#CBD5E1] hover:text-white hover:bg-[#1D2D40]'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 text-[#F36B32]" />
                   <span>{link.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          <div className="pt-4 border-t border-[#DCE3EC] mt-4">
+          <div className="pt-4 border-t border-[#34465B] mt-4">
             <Link
               href="/"
-              className="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#64748B] hover:text-[#14243A] transition-colors"
+              className="flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#CBD5E1] hover:text-white transition-colors"
             >
               <LogOut className="w-4 h-4" />
               <span>Exit Portal</span>
@@ -75,8 +75,8 @@ export default function DealerLayout({ children }: { children: React.ReactNode }
           </div>
         </aside>
 
-        {/* Dealer Body */}
-        <div className="flex-1 w-full bg-[#F0F4F8] border border-[#DCE3EC] rounded-2xl p-6 sm:p-8">
+        {/* Dealer Body: Light Workspace */}
+        <div className="flex-1 w-full bg-white border border-[#DCE3EC] rounded-2xl p-6 sm:p-8 shadow-card">
           {children}
         </div>
       </div>
