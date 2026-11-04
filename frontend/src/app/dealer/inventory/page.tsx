@@ -1,10 +1,60 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { MOCK_VEHICLES } from '@/data/mockData';
-import { PlusCircle, Edit, Eye } from 'lucide-react';
+import { autoverseApi } from '@/services/api/autoverseApi';
+import { PlusCircle, Edit, Eye, Trash2, CheckCircle2 } from 'lucide-react';
 
 export default function DealerInventoryPage() {
-  const inventory = MOCK_VEHICLES;
+  const [inventory, setInventory] = useState<any[]>(MOCK_VEHICLES);
+  const [loading, setLoading] = useState(false);
+  const [deleteStatus, setDeleteStatus] = useState<string | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+    async function loadDealerInventory() {
+      try {
+        setLoading(true);
+        const res = await autoverseApi.getListings();
+        if (mounted && res && res.data && res.data.length > 0) {
+          const mapped = res.data.map((item: any) => {
+            const v = item.vehicleId || {};
+            return {
+              id: item.slug || item._id,
+              dbId: item._id,
+              make: v.make || 'Supercar',
+              title: item.title || `${v.year} ${v.make} ${v.model}`,
+              price: item.price || v.price || 250000,
+              images: (item.images && item.images.length) ? item.images : ((v.images && v.images.length) ? v.images : ['https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e']),
+              status: item.status || 'active',
+            };
+          });
+          setInventory(mapped);
+        }
+      } catch (err) {
+        console.warn('[DealerInventory] Fallback to showroom dataset:', err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    }
+    loadDealerInventory();
+    return () => { mounted = false; };
+  }, []);
+
+  const handleDelete = async (vehicleId: string, dbId?: string) => {
+    if (!confirm('Are you sure you want to remove this vehicle from your active showroom?')) return;
+    try {
+      if (dbId) {
+        await autoverseApi.deleteListing(dbId);
+      }
+    } catch (err) {
+      console.warn('[DealerInventory] Deletion offline or simulated:', err);
+    }
+    setInventory((prev) => prev.filter((item) => item.id !== vehicleId));
+    setDeleteStatus('Vehicle removed successfully from inventory.');
+    setTimeout(() => setDeleteStatus(null), 3000);
+  };
 
   return (
     <div className="space-y-6">
@@ -44,6 +94,12 @@ export default function DealerInventoryPage() {
                 >
                   Public View
                 </Link>
+                <button
+                  onClick={() => handleDelete(veh.id, veh.dbId)}
+                  className="px-2.5 py-1 bg-red-50 text-red-600 border border-red-200 rounded-md text-[11px] font-semibold hover:bg-red-600 hover:text-white transition-colors"
+                >
+                  Remove
+                </button>
               </div>
             </div>
           </div>

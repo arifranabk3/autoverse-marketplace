@@ -59,8 +59,21 @@ export const SavedVehiclesProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [comparedIds, isLoaded]);
 
-  const toggleSave = (id: string) => {
-    setSavedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
+  const toggleSave = async (id: string) => {
+    const isCurrentlySaved = savedIds.includes(id);
+    setSavedIds((prev) => (isCurrentlySaved ? prev.filter((item) => item !== id) : [...prev, id]));
+
+    // Sync to backend buyer favorites API when authenticated
+    try {
+      const { autoverseApi } = await import('@/services/api/autoverseApi');
+      if (isCurrentlySaved) {
+        await autoverseApi.removeFavorite(id);
+      } else {
+        await autoverseApi.addFavorite(id);
+      }
+    } catch (err) {
+      console.warn('[SavedVehiclesContext] Backend favorite sync fallback to local persistence:', err);
+    }
   };
 
   const isSaved = (id: string) => savedIds.includes(id);

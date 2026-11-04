@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   SlidersHorizontal, 
   ArrowUpDown, 
@@ -10,19 +10,84 @@ import {
   Check
 } from 'lucide-react';
 import { MOCK_VEHICLES } from '@/data/mockData';
+import { autoverseApi } from '@/services/api/autoverseApi';
 import { VehicleCard } from '@/components/vehicle/VehicleCard';
 import { FilterSidebar } from '@/components/vehicle/FilterSidebar';
 import { Breadcrumbs } from '@/components/common/Breadcrumbs';
 import { FilterState, Vehicle } from '@/types';
 
 export default function CarsPage() {
+  const [vehicles, setVehicles] = useState<Vehicle[]>(MOCK_VEHICLES);
+  const [isLoading, setIsLoading] = useState(false);
   const [filters, setFilters] = useState<FilterState>({
     sortBy: 'price_desc',
   });
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  useEffect(() => {
+    let mounted = true;
+    async function fetchInventory() {
+      try {
+        setIsLoading(true);
+        const res = await autoverseApi.getListings();
+        if (mounted && res && res.data && res.data.length > 0) {
+          // Normalize populated listings to Vehicle models
+          const liveVehicles: Vehicle[] = res.data.map((item: any) => {
+            const v = item.vehicleId || {};
+            return {
+              id: item.slug || item._id,
+              make: v.make || 'Supercar',
+              model: v.model || item.title,
+              variant: v.variant || '',
+              year: v.year || 2024,
+              price: item.price || v.price || 250000,
+              mileage: v.mileage || 1500,
+              fuelType: v.fuelType || 'Petrol',
+              transmission: v.transmission || 'Automatic',
+              bodyType: v.bodyType || 'Coupe',
+              condition: v.condition || 'Certified Pre-Owned',
+              horsepower: v.horsepower || 600,
+              engine: v.specifications?.engine || 'V8 Twin-Turbo',
+              acceleration: v.acceleration || '3.2s',
+              topSpeed: v.topSpeed || '205 mph',
+              exteriorColor: v.exteriorColor || 'Metallic Black',
+              interiorColor: v.interiorColor || 'Black Leather',
+              vin: v.vin || `VIN-${item._id}`,
+              createdAt: item.createdAt || new Date().toISOString(),
+              images: (item.images && item.images.length) ? item.images : ((v.images && v.images.length) ? v.images : ['https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e']),
+              featured: item.featured || false,
+              title: item.title || `${v.year} ${v.make} ${v.model}`,
+              description: item.description || v.description || 'Curated exotic vehicle',
+              location: item.location || 'Los Angeles, CA',
+              dealer: {
+                id: item.dealerId?._id || item.dealerId?.slug || 'dlr_apex',
+                name: item.dealerId?.businessName || 'Apex Prestige Motors',
+                logo: item.dealerId?.logo || 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9',
+                address: item.dealerId?.location?.address || 'Beverly Hills, CA',
+                phone: item.dealerId?.contactDetails?.phone || '+1 (310) 555-0199',
+                established: 2012,
+                verified: true,
+                rating: 4.9,
+                reviewCount: 142,
+                reviewsCount: 142,
+              },
+              features: v.features || ['Premium Audio', 'Carbon Package'],
+            };
+          });
+          setVehicles(liveVehicles);
+        }
+      } catch (err) {
+        console.warn('[CarsPage] Live backend inventory fetch fallback to static dataset:', err);
+      } finally {
+        if (mounted) setIsLoading(false);
+      }
+    }
+    fetchInventory();
+    return () => { mounted = false; };
+  }, []);
+
   const filteredVehicles = useMemo(() => {
-    return MOCK_VEHICLES.filter((v: Vehicle) => {
+    return vehicles.filter((v: Vehicle) => {
       if (filters.make && v.make.toLowerCase() !== filters.make.toLowerCase()) return false;
       if (filters.bodyType && v.bodyType.toLowerCase() !== filters.bodyType.toLowerCase()) return false;
       if (filters.fuelType && v.fuelType.toLowerCase() !== filters.fuelType.toLowerCase()) return false;
@@ -38,7 +103,7 @@ export default function CarsPage() {
       if (filters.sortBy === 'mileage_asc') return a.mileage - b.mileage;
       return 0;
     });
-  }, [filters]);
+  }, [filters, vehicles]);
 
   const resetFilters = () => {
     setFilters({ sortBy: 'price_desc' });

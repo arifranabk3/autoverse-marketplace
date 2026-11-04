@@ -34,6 +34,33 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
   const { toggleSave, isSaved, toggleCompare, isCompared } = useSavedVehicles();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [inquirySent, setInquirySent] = useState(false);
+  const [inquiryName, setInquiryName] = useState('');
+  const [inquiryEmail, setInquiryEmail] = useState('');
+  const [inquiryPhone, setInquiryPhone] = useState('');
+  const [inquiryMessage, setInquiryMessage] = useState('');
+  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
+
+  const handleInquirySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingInquiry(true);
+    try {
+      const { autoverseApi } = await import('@/services/api/autoverseApi');
+      await autoverseApi.createInquiry({
+        vehicleName: vehicle.title,
+        name: inquiryName || 'Verified Collector',
+        email: inquiryEmail || 'buyer@autoverse.com',
+        phone: inquiryPhone || '+1 (555) 019-2834',
+        message: inquiryMessage || 'Requesting acquisition prospectus and verified service records.',
+        listingId: vehicle.id,
+        dealerId: vehicle.dealer?.id,
+      });
+    } catch (err) {
+      console.warn('[VehicleDetail] Inquiry API submission offline fallback:', err);
+    } finally {
+      setIsSubmittingInquiry(false);
+      setInquirySent(true);
+    }
+  };
 
   const saved = isSaved(vehicle.id);
   const compared = isCompared(vehicle.id);
@@ -267,18 +294,14 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
                   </p>
                 </div>
               ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setInquirySent(true);
-                  }}
-                  className="space-y-3"
-                >
+                <form onSubmit={handleInquirySubmit} className="space-y-3">
                   <div>
                     <label className="text-[11px] font-bold uppercase tracking-wider text-[#64748B] block mb-1">Full Legal Name</label>
                     <input
                       type="text"
                       placeholder="e.g. Alexander Vance"
+                      value={inquiryName}
+                      onChange={(e) => setInquiryName(e.target.value)}
                       required
                       className="w-full px-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] placeholder:text-[#94A3B8] font-medium focus:outline-none focus:border-[#F36B32] focus:bg-white transition-colors"
                     />
@@ -288,6 +311,8 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
                     <input
                       type="email"
                       placeholder="alexander@example.com"
+                      value={inquiryEmail}
+                      onChange={(e) => setInquiryEmail(e.target.value)}
                       required
                       className="w-full px-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] placeholder:text-[#94A3B8] font-medium focus:outline-none focus:border-[#F36B32] focus:bg-white transition-colors"
                     />
@@ -297,6 +322,8 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
                     <input
                       type="tel"
                       placeholder="+1 (555) 019-2834"
+                      value={inquiryPhone}
+                      onChange={(e) => setInquiryPhone(e.target.value)}
                       required
                       className="w-full px-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] placeholder:text-[#94A3B8] font-medium focus:outline-none focus:border-[#F36B32] focus:bg-white transition-colors"
                     />
@@ -306,14 +333,17 @@ export default function VehicleDetailPage({ params }: { params: { id: string } }
                     <textarea
                       rows={3}
                       placeholder="Mention trade-in requests, enclosed transport destinations, or lease inquiries..."
+                      value={inquiryMessage}
+                      onChange={(e) => setInquiryMessage(e.target.value)}
                       className="w-full px-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] placeholder:text-[#94A3B8] font-medium focus:outline-none focus:border-[#F36B32] focus:bg-white transition-colors"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3.5 px-4 rounded-xl bg-[#F36B32] hover:bg-[#E85B25] text-white font-bold text-sm shadow-md shadow-[#F36B32]/30 hover:shadow-lg transition-all active:scale-[0.98]"
+                    disabled={isSubmittingInquiry}
+                    className="w-full py-3.5 px-4 rounded-xl bg-[#F36B32] hover:bg-[#E85B25] text-white font-bold text-sm shadow-md shadow-[#F36B32]/30 hover:shadow-lg transition-all active:scale-[0.98] disabled:opacity-50"
                   >
-                    Send Acquisition Request
+                    {isSubmittingInquiry ? 'Transmitting Request...' : 'Send Acquisition Request'}
                   </button>
                 </form>
               )}

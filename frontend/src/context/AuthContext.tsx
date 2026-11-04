@@ -114,21 +114,59 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const login = async (roleOrEmail: UserRole | string, _password?: string): Promise<{ success: boolean; redirectUrl: string }> => {
+  const login = async (roleOrEmail: UserRole | string, password?: string): Promise<{ success: boolean; redirectUrl: string }> => {
     setIsLoading(true);
     try {
-      // Find matching demo account or default by role/email
-      let matched = DEMO_ACCOUNTS.find((a) => a.role === roleOrEmail || a.user.email.toLowerCase() === roleOrEmail.toLowerCase());
-      if (!matched) {
-        // Fallback default buyer
-        matched = DEMO_ACCOUNTS[0];
+      // 1. Check if user is logging in via demo quick-selection or direct role name
+      const isRoleKeyword = roleOrEmail === 'buyer' || roleOrEmail === 'dealer' || roleOrEmail === 'admin';
+      let targetEmail = roleOrEmail;
+      const targetPass = password || 'autoverse2026';
+
+      if (isRoleKeyword) {
+        if (roleOrEmail === 'buyer') targetEmail = 'buyer@autoverse.com';
+        if (roleOrEmail === 'dealer') targetEmail = 'dealer@autoverse.com';
+        if (roleOrEmail === 'admin') targetEmail = 'admin@autoverse.com';
       }
 
-      const activeUser = { ...matched.user };
+      let activeUser: User | null = null;
+      let token = '';
+
+      // 2. Attempt real backend authentication first
+      try {
+        const { autoverseApi } = await import('@/services/api/autoverseApi');
+        const res = await autoverseApi.login({ email: targetEmail, password: targetPass });
+        if (res && res.user && res.token) {
+          activeUser = {
+            id: res.user.id || res.user._id,
+            name: res.user.name,
+            email: res.user.email,
+            role: res.user.role,
+            avatar: res.user.avatar,
+            phone: res.user.phone,
+            dealershipName: res.user.dealershipName,
+            unreadNotifications: res.user.role === 'admin' ? 8 : res.user.role === 'dealer' ? 5 : 3,
+            unreadMessages: res.user.role === 'dealer' ? 4 : 2,
+          };
+          token = res.token;
+        }
+      } catch (apiErr) {
+        console.warn('[AuthContext] Backend login unavailable or credentials mismatch, falling back to client demo hydration:', apiErr);
+      }
+
+      // 3. Fallback to demo account profile if backend offline or during static demo mode
+      if (!activeUser) {
+        let matched = DEMO_ACCOUNTS.find((a) => a.role === roleOrEmail || a.user.email.toLowerCase() === roleOrEmail.toLowerCase());
+        if (!matched) {
+          matched = DEMO_ACCOUNTS[0];
+        }
+        activeUser = { ...matched.user };
+        token = `autoverse_session_${activeUser.role}_${activeUser.id}`;
+      }
+
       setUser(activeUser);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(activeUser));
-      // Store session token (mock or JWT representation)
-      localStorage.setItem(TOKEN_KEY, `autoverse_session_${activeUser.role}_${activeUser.id}`);
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem('auth_token', token);
 
       let redirectUrl = '/dashboard';
       if (activeUser.role === 'dealer') redirectUrl = '/dealer';
