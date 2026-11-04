@@ -54,3 +54,4 @@ In your Vercel Project Dashboard (**Settings -> Environment Variables**), add th
   - Whitelisted CDNs: `images.unsplash.com`, `*.amazonaws.com`, `media.autoverse.com`.
 - **Fault-Tolerant Progressive Fallbacks:**
   - If the backend is under maintenance or temporarily unavailable, public showroom pages gracefully display curated vehicle specifications without broken UI or blank screens.
+
