@@ -21,7 +21,7 @@ export const EmptyState: React.FC<StateFeedbackProps> = ({
       <div className="w-14 h-14 rounded-full bg-[#F0F4F8] border border-[#E8EDF3] flex items-center justify-center text-[#64748B] mb-4">
         <AlertCircle className="w-6 h-6 text-[#F36B32]" />
       </div>
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+      <h3 className="text-xl font-bold text-[#14243A] mb-2">{title}</h3>
       <p className="text-sm text-[#64748B] max-w-md mb-6">{description}</p>
       {actionHref && (
         <Link
