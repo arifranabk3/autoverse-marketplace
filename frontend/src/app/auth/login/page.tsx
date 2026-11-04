@@ -1,29 +1,86 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Mail, Lock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Mail, Lock, ArrowRight, UserCheck, Building2, ShieldAlert } from 'lucide-react';
+import { useAuth, DEMO_ACCOUNTS, UserRole } from '@/context/AuthContext';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const searchParams = useSearchParams();
+  const redirectTarget = searchParams.get('redirect');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const { login } = useAuth();
+  const [email, setEmail] = useState('alexander.pierce@autoverse.vip');
+  const [password, setPassword] = useState('••••••••••••');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate auth token for preview
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('auth_token', 'mock_jwt_token');
+    setIsSubmitting(true);
+    try {
+      const res = await login(email, password);
+      if (redirectTarget) {
+        router.push(redirectTarget);
+      } else {
+        router.push(res.redirectUrl);
+      }
+    } finally {
+      setIsSubmitting(false);
     }
-    router.push('/dashboard');
+  };
+
+  const handleQuickDemoLogin = async (role: UserRole) => {
+    setIsSubmitting(true);
+    try {
+      const res = await login(role);
+      if (redirectTarget) {
+        router.push(redirectTarget);
+      } else {
+        router.push(res.redirectUrl);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="bg-[#F0F4F8] border border-[#DCE3EC] p-8 rounded-3xl shadow-2xl space-y-6">
+    <div className="bg-[#FFFFFF] border border-[#DCE3EC] p-8 rounded-3xl shadow-xl space-y-6">
       <div className="text-center space-y-1">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-[#F36B32]">
+          Secure Gateway
+        </span>
         <h2 className="text-2xl font-bold text-[#14243A]">Client Portal Sign In</h2>
-        <p className="text-xs text-[#64748B]">Enter your credentials to access your private collection</p>
+        <p className="text-xs text-[#64748B]">Enter credentials or select a demonstration role below</p>
+      </div>
+
+      {/* Instant Demo Role Quick Selection */}
+      <div className="p-4 bg-[#F5F7FA] border border-[#DCE3EC] rounded-2xl space-y-2.5">
+        <span className="text-[11px] font-bold text-[#14243A] block">Instant Demo Access:</span>
+        <div className="grid grid-cols-1 gap-2">
+          {DEMO_ACCOUNTS.map((acc) => (
+            <button
+              key={acc.role}
+              type="button"
+              onClick={() => handleQuickDemoLogin(acc.role)}
+              className="flex items-center justify-between p-2.5 bg-white border border-[#DCE3EC] hover:border-[#F36B32] hover:bg-[#F36B32]/5 rounded-xl text-left transition-all group"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${
+                  acc.role === 'buyer' ? 'bg-[#101D2D] text-white' : acc.role === 'dealer' ? 'bg-[#F36B32] text-white' : 'bg-red-600 text-white'
+                }`}>
+                  {acc.role === 'buyer' ? <UserCheck className="w-4 h-4" /> : acc.role === 'dealer' ? <Building2 className="w-4 h-4" /> : <ShieldAlert className="w-4 h-4" />}
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-[#14243A] group-hover:text-[#F36B32] transition-colors">{acc.label}</p>
+                  <p className="text-[10px] text-[#64748B]">{acc.user.email}</p>
+                </div>
+              </div>
+              <ArrowRight className="w-3.5 h-3.5 text-[#64748B] group-hover:text-[#F36B32] group-hover:translate-x-1 transition-all" />
+            </button>
+          ))}
+        </div>
       </div>
 
       <form onSubmit={handleLogin} className="space-y-4">
@@ -37,7 +94,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="collector@domain.com"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32] focus:bg-white font-medium"
             />
           </div>
         </div>
@@ -57,16 +114,17 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••••••"
               required
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FFFFFF] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32]"
+              className="w-full pl-10 pr-4 py-2.5 bg-[#F5F7FA] border border-[#DCE3EC] rounded-xl text-sm text-[#14243A] focus:outline-none focus:border-[#F36B32] focus:bg-white font-medium"
             />
           </div>
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 px-4 rounded-xl bg-[#F36B32] hover:bg-[#DE561D] text-[#14243A] font-bold text-sm shadow-lg shadow-[#F36B32]/25 transition-all flex items-center justify-center gap-2"
+          disabled={isSubmitting}
+          className="w-full py-3.5 px-4 rounded-xl bg-[#F36B32] hover:bg-[#DE561D] text-white font-bold text-sm shadow-md shadow-[#F36B32]/25 transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50"
         >
-          <span>Sign In to AUTOVERSE</span>
+          <span>{isSubmitting ? 'Authenticating...' : 'Sign In to AUTOVERSE'}</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </form>
@@ -81,3 +139,14 @@ export default function LoginPage() {
   );
 }
 
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="p-8 bg-white rounded-3xl border border-[#DCE3EC] text-center">
+        <div className="w-8 h-8 border-4 border-[#F36B32] border-t-transparent rounded-full animate-spin mx-auto" />
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
+  );
+}
