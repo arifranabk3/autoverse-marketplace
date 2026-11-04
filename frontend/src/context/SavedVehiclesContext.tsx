@@ -1,7 +1,6 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Vehicle } from '@/types';
 
 interface SavedVehiclesContextType {
   savedIds: string[];
@@ -15,9 +14,50 @@ interface SavedVehiclesContextType {
 
 const SavedVehiclesContext = createContext<SavedVehiclesContextType | undefined>(undefined);
 
+const STORAGE_KEY_SAVED = 'autoverse_favorites_v1';
+const STORAGE_KEY_COMPARE = 'autoverse_compare_v1';
+
 export const SavedVehiclesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [savedIds, setSavedIds] = useState<string[]>(['veh-01', 'veh-03']);
   const [comparedIds, setComparedIds] = useState<string[]>(['veh-01', 'veh-02']);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Restore from localStorage upon browser mount
+  useEffect(() => {
+    try {
+      const storedSaved = localStorage.getItem(STORAGE_KEY_SAVED);
+      if (storedSaved) {
+        setSavedIds(JSON.parse(storedSaved));
+      }
+      const storedCompare = localStorage.getItem(STORAGE_KEY_COMPARE);
+      if (storedCompare) {
+        setComparedIds(JSON.parse(storedCompare));
+      }
+    } catch (e) {
+      console.warn('LocalStorage access issue:', e);
+    } finally {
+      setIsLoaded(true);
+    }
+  }, []);
+
+  // Sync to localStorage
+  useEffect(() => {
+    if (!isLoaded) return;
+    try {
+      localStorage.setItem(STORAGE_KEY_SAVED, JSON.stringify(savedIds));
+    } catch (e) {
+      console.warn('LocalStorage save error:', e);
+    }
+  }, [savedIds, isLoaded]);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    try {
+      localStorage.setItem(STORAGE_KEY_COMPARE, JSON.stringify(comparedIds));
+    } catch (e) {
+      console.warn('LocalStorage compare save error:', e);
+    }
+  }, [comparedIds, isLoaded]);
 
   const toggleSave = (id: string) => {
     setSavedIds((prev) => (prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]));
@@ -66,4 +106,3 @@ export const useSavedVehicles = () => {
   }
   return context;
 };
-
