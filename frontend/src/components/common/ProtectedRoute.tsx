@@ -97,3 +97,4 @@ export function ProtectedRoute({ children, allowedRoles, roleTitle }: ProtectedR
 
   return <>{children}</>;
 }
+

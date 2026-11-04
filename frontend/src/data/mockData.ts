@@ -10,7 +10,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 42,
     "logo": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Precision engineering and unparalleled motorsport heritage."
+    "desc": "Precision engineering and unparalleled motorsport heritage.",
+    "heroImage": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1600&q=80",
+    "description": "Precision engineering and unparalleled motorsport heritage.",
+    "vehicleCount": 42
   },
   {
     "id": "b_bmw",
@@ -21,7 +24,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 58,
     "logo": "https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&w=1600&q=80",
-    "desc": "The Ultimate Driving Machine combining luxury dynamics and power."
+    "desc": "The Ultimate Driving Machine combining luxury dynamics and power.",
+    "heroImage": "https://images.unsplash.com/photo-1555353540-64580b51c258?auto=format&fit=crop&w=1600&q=80",
+    "description": "The Ultimate Driving Machine combining luxury dynamics and power.",
+    "vehicleCount": 58
   },
   {
     "id": "b_mercedes",
@@ -32,7 +38,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 64,
     "logo": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Setting the global benchmark for executive sophistication and comfort."
+    "desc": "Setting the global benchmark for executive sophistication and comfort.",
+    "heroImage": "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
+    "description": "Setting the global benchmark for executive sophistication and comfort.",
+    "vehicleCount": 64
   },
   {
     "id": "b_audi",
@@ -43,7 +52,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 38,
     "logo": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Vorsprung durch Technik with quattro all-wheel drive mastery."
+    "desc": "Vorsprung durch Technik with quattro all-wheel drive mastery.",
+    "heroImage": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1600&q=80",
+    "description": "Vorsprung durch Technik with quattro all-wheel drive mastery.",
+    "vehicleCount": 38
   },
   {
     "id": "b_ferrari",
@@ -54,7 +66,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 24,
     "logo": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Pure racing passion, intoxicating exhaust notes, and Italian design flair."
+    "desc": "Pure racing passion, intoxicating exhaust notes, and Italian design flair.",
+    "heroImage": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1600&q=80",
+    "description": "Pure racing passion, intoxicating exhaust notes, and Italian design flair.",
+    "vehicleCount": 24
   },
   {
     "id": "b_lamborghini",
@@ -65,7 +80,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 18,
     "logo": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Uncompromising visionary design and ferocious naturally aspirated power."
+    "desc": "Uncompromising visionary design and ferocious naturally aspirated power.",
+    "heroImage": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1600&q=80",
+    "description": "Uncompromising visionary design and ferocious naturally aspirated power.",
+    "vehicleCount": 18
   },
   {
     "id": "b_aston",
@@ -76,7 +94,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 16,
     "logo": "https://images.unsplash.com/photo-1600793575654-910699b5e4d4?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1600793575654-910699b5e4d4?auto=format&fit=crop&w=1600&q=80",
-    "desc": "The pinnacle of British grand touring sophistication and elegance."
+    "desc": "The pinnacle of British grand touring sophistication and elegance.",
+    "heroImage": "https://images.unsplash.com/photo-1600793575654-910699b5e4d4?auto=format&fit=crop&w=1600&q=80",
+    "description": "The pinnacle of British grand touring sophistication and elegance.",
+    "vehicleCount": 16
   },
   {
     "id": "b_tesla",
@@ -87,7 +108,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 52,
     "logo": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Pioneering electric propulsion, autonomous intelligence, and instant torque."
+    "desc": "Pioneering electric propulsion, autonomous intelligence, and instant torque.",
+    "heroImage": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1600&q=80",
+    "description": "Pioneering electric propulsion, autonomous intelligence, and instant torque.",
+    "vehicleCount": 52
   },
   {
     "id": "b_landrover",
@@ -98,7 +122,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 32,
     "logo": "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Peerless peer luxury SUVs engineered to conquer any terrain on Earth."
+    "desc": "Peerless peer luxury SUVs engineered to conquer any terrain on Earth.",
+    "heroImage": "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1600&q=80",
+    "description": "Peerless peer luxury SUVs engineered to conquer any terrain on Earth.",
+    "vehicleCount": 32
   },
   {
     "id": "b_lucid",
@@ -109,7 +136,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 14,
     "logo": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Next-generation luxury EV range, miniaturized powertrains, and lounge interiors."
+    "desc": "Next-generation luxury EV range, miniaturized powertrains, and lounge interiors.",
+    "heroImage": "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1600&q=80",
+    "description": "Next-generation luxury EV range, miniaturized powertrains, and lounge interiors.",
+    "vehicleCount": 14
   },
   {
     "id": "b_toyota",
@@ -120,7 +150,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 85,
     "logo": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1600&q=80",
-    "desc": "World leader in hybrid reliability, legendary durability, and accessible motoring."
+    "desc": "World leader in hybrid reliability, legendary durability, and accessible motoring.",
+    "heroImage": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1600&q=80",
+    "description": "World leader in hybrid reliability, legendary durability, and accessible motoring.",
+    "vehicleCount": 85
   },
   {
     "id": "b_lexus",
@@ -131,7 +164,10 @@ export const MOCK_BRANDS: Brand[] = [
     "count": 28,
     "logo": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80",
     "hero": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1600&q=80",
-    "desc": "Takumi craftsmanship, whisper-quiet cabins, and flawless hybrid performance."
+    "desc": "Takumi craftsmanship, whisper-quiet cabins, and flawless hybrid performance.",
+    "heroImage": "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1600&q=80",
+    "description": "Takumi craftsmanship, whisper-quiet cabins, and flawless hybrid performance.",
+    "vehicleCount": 28
   }
 ];
 
